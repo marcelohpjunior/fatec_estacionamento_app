@@ -1,0 +1,5 @@
+lib/app/modules/estacionamento/estacionamento_module.dart
+lib/app/modules/estacionamento/estacionamento_page.dart
+test/app/modules/estacionamento/estacionamento_page_test.dart
+lib/app/modules/estacionamento/estacionamento_controller.dart
+test/app/modules/estacionamento/estacionamento_controller_test.dart

@@ -1,0 +1,5 @@
+lib/app/modules/avisos/avisos_module.dart
+lib/app/modules/avisos/avisos_page.dart
+test/app/modules/avisos/avisos_page_test.dart
+lib/app/modules/avisos/avisos_controller.dart
+test/app/modules/avisos/avisos_controller_test.dart

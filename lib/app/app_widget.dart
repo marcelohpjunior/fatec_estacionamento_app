@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Fatec Estacionamento',
       theme: ThemeData(
-          primaryColor: CustomColors.vinho,
+          primaryColor: CustomColors.azulEscuro,
           accentColor: CustomColors.azulEscuro,
           primarySwatch: Colors.blueGrey),
       initialRoute: '/',

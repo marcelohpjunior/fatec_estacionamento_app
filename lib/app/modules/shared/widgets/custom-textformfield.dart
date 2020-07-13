@@ -27,6 +27,8 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    this.controller?.mostrarSenha =
+        this.obscureText != null ? this.obscureText : false;
     return controller != null
         ? Observer(builder: (_) {
             return _textFormField();
@@ -35,19 +37,19 @@ class CustomTextFormField extends StatelessWidget {
   }
 
   _textFormField() {
-    bool _mostrarsenha = this.obscureText == null ? false : this.obscureText;
-
     return TextFormField(
       controller: this.textEditingController,
+      keyboardType: keyboardType,
       validator: validator,
-      obscureText: _mostrarsenha,
+      obscureText: this.controller?.mostrarSenha != null
+          ? this.controller?.mostrarSenha
+          : false,
       cursorColor: this.cursorColor,
       decoration: InputDecoration(
         suffixIcon: this.obscureText
             ? IconButton(
                 onPressed: () {
-                  _mostrarsenha = !_mostrarsenha;
-                  this.controller.mudarIconSenha(_mostrarsenha);
+                  this.controller.mudarIconSenha();
                 },
                 icon: Icon(
                   this.controller.iconMostrarSenha,
