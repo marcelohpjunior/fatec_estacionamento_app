@@ -1,0 +1,3 @@
+lib/app/repositories/interfaces/comunicado_repository_interface.dart
+lib/app/repositories/comunicado_repository.dart
+test/app/repositories/comunicado_repository_test.dart

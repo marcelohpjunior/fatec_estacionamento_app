@@ -1,3 +1,4 @@
+import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -18,30 +19,18 @@ class _EstacionamentoPageState
 
   @override
   Widget build(BuildContext context) {
+    controller.getVeiculos();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(
-        children: <Widget>[
-          // retornaCard(),
-          retornaNOVOCard(
-              EstacionamentoController(),
-              "https://revistacarro.com.br/wp-content/uploads/2019/10/Volkswagen-Bras%C3%ADlia-6.jpg",
-              "Volkswagen Brasília 1970 Amarela",
-              "CBA-4321"),
-          retornaNOVOCard(
-              EstacionamentoController(),
-              "https://i.pinimg.com/originals/57/5e/58/575e5808ad1b14380c54e3e9734a4883.jpg",
-              "Yamaha XJ6 2014 Branca",
-              "ABC-1234"),
-        ],
-      ),
+      body: ListView.builder(itemBuilder: (BuildContext ctxt, int index) {
+        return retornaNOVOCard(controller.veiculos[index]);
+      }),
     );
   }
 
-  retornaNOVOCard(
-      var controller, String urlImagem, String descricaoVeiculo, String placa) {
+  retornaNOVOCard(Veiculo veiculo) {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       height: 150,
@@ -61,7 +50,7 @@ class _EstacionamentoPageState
                     width: 100,
                     // color: Colors.red,
                     child: Image.network(
-                      urlImagem,
+                      veiculo.imagem,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -85,7 +74,7 @@ class _EstacionamentoPageState
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      descricaoVeiculo,
+                                      veiculo.Decricao,
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -99,7 +88,7 @@ class _EstacionamentoPageState
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      placa.toUpperCase(),
+                                      veiculo.placa.toUpperCase(),
                                       //"ADB-1234",
                                       style: TextStyle(fontSize: 16),
                                     ),

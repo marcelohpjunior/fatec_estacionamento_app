@@ -1,4 +1,4 @@
-import 'package:fatec_estacionamento/app/modules/avisos/avisos_module.dart';
+import 'package:fatec_estacionamento/app/modules/comunicado/comunicado_module.dart';
 import 'package:fatec_estacionamento/app/modules/estacionamento/estacionamento_module.dart';
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         controller: controller.pageController,
         children: <Widget>[
           RouterOutlet(module: EstacionamentoModule()),
-          RouterOutlet(module: AvisosModule()),
+          RouterOutlet(module: ComunicadoModule()),
         ],
       ),
       bottomNavigationBar: Observer(builder: (_) {
@@ -39,9 +39,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.local_parking), title: Text("Estacionamento")),
+                icon: Icon(Icons.directions_car),
+                title: Text("Estacionamento")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.warning), title: Text("Avisos")),
+                icon: Icon(const IconData(0xe900, fontFamily: 'campaign')),
+                title: Text("Comunicados")),
           ],
         );
       }),
