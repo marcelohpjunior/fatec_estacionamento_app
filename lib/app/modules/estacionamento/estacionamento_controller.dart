@@ -12,7 +12,7 @@ class EstacionamentoController = _EstacionamentoControllerBase
 abstract class _EstacionamentoControllerBase with Store {
   final IEstacionamentoRepository repositorio;
 
-  _EstacionamentoControllerBase(this.repositorio);
+  _EstacionamentoControllerBase(this.repositorio) {}
 
   @observable
   List<Veiculo> veiculos = List<Veiculo>();
@@ -42,5 +42,6 @@ abstract class _EstacionamentoControllerBase with Store {
   @action
   getVeiculos() async {
     veiculos = await repositorio.get();
+    return veiculos;
   }
 }

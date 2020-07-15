@@ -19,14 +19,25 @@ class _EstacionamentoPageState
 
   @override
   Widget build(BuildContext context) {
-    controller.getVeiculos();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(itemBuilder: (BuildContext ctxt, int index) {
-        return retornaNOVOCard(controller.veiculos[index]);
-      }),
+      body: FutureBuilder(
+        future: controller.getVeiculos(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                return retornaNOVOCard(snapshot.data[index]);
+              });
+        },
+      ),
     );
   }
 
