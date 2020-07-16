@@ -13,27 +13,18 @@ class EstacionamentoRepository implements IEstacionamentoRepository {
     final response = await dio.get(
         'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/master/lib/app/repositories/mock/estacionamento.json');
     var jsonVeiculo = json.decode(response.data)['veiculos'];
-    //var a = veiculosToJson(jsonVeiculo);
 
     return veiculofromJson(jsonVeiculo);
   }
 
-  veiculofromJson(var json) {
+  veiculofromJson(var veiculosJson) {
     var veiculos = new List<Veiculo>();
-    if (json != null) {
-      json.forEach((v) {
+    if (veiculosJson != null) {
+      veiculosJson.forEach((v) {
         veiculos.add(new Veiculo.fromJson(v));
       });
       return veiculos;
     }
-  }
-
-  Map<String, dynamic> veiculosToJson(var veiculos) {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (veiculos != null) {
-      data['veiculos'] = veiculos.toMap().map((v) => v.toJson()).toList();
-    }
-    return data;
   }
 
   //dispose will be called automatically

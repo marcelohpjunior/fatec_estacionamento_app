@@ -22,15 +22,14 @@ abstract class _EstacionamentoControllerBase with Store {
 
   @observable
   String labelBotaoEntradaSaida = "ENTRAR";
-  bool entrada = true;
 
   @observable
   bool carregando = false;
 
   @action
-  void clickBotaoEntradaSaida() {
-    entrada = !entrada;
-    if (entrada) {
+  void clickBotaoEntradaSaida(Veiculo veiculo) {
+    veiculo.entrada = !veiculo.entrada;
+    if (veiculo.entrada) {
       corBotaoEntradaSaida = Colors.green;
       labelBotaoEntradaSaida = "ENTRAR";
     } else {

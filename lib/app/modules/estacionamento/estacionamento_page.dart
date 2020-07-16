@@ -1,4 +1,5 @@
 import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/estacionamento_module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -42,6 +43,7 @@ class _EstacionamentoPageState
   }
 
   retornaNOVOCard(Veiculo veiculo) {
+    var controller = EstacionamentoController(null);
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       height: 150,
@@ -126,17 +128,17 @@ class _EstacionamentoPageState
                         color: controller.corBotaoEntradaSaida,
                         onPressed: () async {
                           controller.carregando = true;
-                          await Future.delayed(Duration(seconds: 2))
+                          await Future.delayed(Duration(seconds: 3))
                               .then((onValue) => true);
 
-                          controller.clickBotaoEntradaSaida();
+                          controller.clickBotaoEntradaSaida(veiculo);
                           controller.carregando = false;
                         },
                         child: Observer(builder: (_) {
                           return controller.carregando
                               ? CircularProgressIndicator(
                                   backgroundColor: Colors.white,
-                                  valueColor: new AlwaysStoppedAnimation<Color>(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
                                       controller.corBotaoEntradaSaida),
                                 )
                               : Text(

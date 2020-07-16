@@ -9,6 +9,21 @@ part of 'estacionamento_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EstacionamentoController on _EstacionamentoControllerBase, Store {
+  final _$veiculosAtom = Atom(name: '_EstacionamentoControllerBase.veiculos');
+
+  @override
+  List<Veiculo> get veiculos {
+    _$veiculosAtom.reportRead();
+    return super.veiculos;
+  }
+
+  @override
+  set veiculos(List<Veiculo> value) {
+    _$veiculosAtom.reportWrite(value, super.veiculos, () {
+      super.veiculos = value;
+    });
+  }
+
   final _$corBotaoEntradaSaidaAtom =
       Atom(name: '_EstacionamentoControllerBase.corBotaoEntradaSaida');
 
@@ -59,16 +74,24 @@ mixin _$EstacionamentoController on _EstacionamentoControllerBase, Store {
     });
   }
 
+  final _$getVeiculosAsyncAction =
+      AsyncAction('_EstacionamentoControllerBase.getVeiculos');
+
+  @override
+  Future getVeiculos() {
+    return _$getVeiculosAsyncAction.run(() => super.getVeiculos());
+  }
+
   final _$_EstacionamentoControllerBaseActionController =
       ActionController(name: '_EstacionamentoControllerBase');
 
   @override
-  void clickBotaoEntradaSaida() {
+  void clickBotaoEntradaSaida(Veiculo veiculo) {
     final _$actionInfo =
         _$_EstacionamentoControllerBaseActionController.startAction(
             name: '_EstacionamentoControllerBase.clickBotaoEntradaSaida');
     try {
-      return super.clickBotaoEntradaSaida();
+      return super.clickBotaoEntradaSaida(veiculo);
     } finally {
       _$_EstacionamentoControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -77,6 +100,7 @@ mixin _$EstacionamentoController on _EstacionamentoControllerBase, Store {
   @override
   String toString() {
     return '''
+veiculos: ${veiculos},
 corBotaoEntradaSaida: ${corBotaoEntradaSaida},
 labelBotaoEntradaSaida: ${labelBotaoEntradaSaida},
 carregando: ${carregando}
