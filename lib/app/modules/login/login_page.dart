@@ -56,9 +56,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 labelColor: CustomColors.vinho,
                                 iconColor: Colors.blueGrey,
                                 validator: (value) {
-                                  if (value.isEmpty) {
-                                    return "RA inválido";
-                                  }
+                                  //   if (value.isEmpty) {
+                                  //     return "RA inválido";
+                                  //   }
                                   return null;
                                 },
                               ),
@@ -80,9 +80,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   labelColor: CustomColors.vinho,
                                   iconColor: Colors.blueGrey,
                                   validator: (value) {
-                                    if (value.isEmpty) {
-                                      return "Senha inválido";
-                                    }
+                                    // if (value.isEmpty) {
+                                    //   return "Senha inválido";
+                                    // }
                                     return null;
                                   },
                                 );

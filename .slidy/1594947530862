@@ -1,0 +1,4 @@
+lib/app/estacionamento/components/veiculo_card/veiculo_card_widget.dart
+test/app/estacionamento/components/veiculo_card/veiculo_card_widget_test.dart
+lib/app/estacionamento/components/veiculo_card/veiculo_card_controller.dart
+test/app/estacionamento/components/veiculo_card/veiculo_card_controller_test.dart

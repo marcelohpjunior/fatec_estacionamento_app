@@ -12,65 +12,15 @@ mixin _$EstacionamentoController on _EstacionamentoControllerBase, Store {
   final _$veiculosAtom = Atom(name: '_EstacionamentoControllerBase.veiculos');
 
   @override
-  List<Veiculo> get veiculos {
+  List<VeiculoStore> get veiculos {
     _$veiculosAtom.reportRead();
     return super.veiculos;
   }
 
   @override
-  set veiculos(List<Veiculo> value) {
+  set veiculos(List<VeiculoStore> value) {
     _$veiculosAtom.reportWrite(value, super.veiculos, () {
       super.veiculos = value;
-    });
-  }
-
-  final _$corBotaoEntradaSaidaAtom =
-      Atom(name: '_EstacionamentoControllerBase.corBotaoEntradaSaida');
-
-  @override
-  Color get corBotaoEntradaSaida {
-    _$corBotaoEntradaSaidaAtom.reportRead();
-    return super.corBotaoEntradaSaida;
-  }
-
-  @override
-  set corBotaoEntradaSaida(Color value) {
-    _$corBotaoEntradaSaidaAtom.reportWrite(value, super.corBotaoEntradaSaida,
-        () {
-      super.corBotaoEntradaSaida = value;
-    });
-  }
-
-  final _$labelBotaoEntradaSaidaAtom =
-      Atom(name: '_EstacionamentoControllerBase.labelBotaoEntradaSaida');
-
-  @override
-  String get labelBotaoEntradaSaida {
-    _$labelBotaoEntradaSaidaAtom.reportRead();
-    return super.labelBotaoEntradaSaida;
-  }
-
-  @override
-  set labelBotaoEntradaSaida(String value) {
-    _$labelBotaoEntradaSaidaAtom
-        .reportWrite(value, super.labelBotaoEntradaSaida, () {
-      super.labelBotaoEntradaSaida = value;
-    });
-  }
-
-  final _$carregandoAtom =
-      Atom(name: '_EstacionamentoControllerBase.carregando');
-
-  @override
-  bool get carregando {
-    _$carregandoAtom.reportRead();
-    return super.carregando;
-  }
-
-  @override
-  set carregando(bool value) {
-    _$carregandoAtom.reportWrite(value, super.carregando, () {
-      super.carregando = value;
     });
   }
 
@@ -82,28 +32,10 @@ mixin _$EstacionamentoController on _EstacionamentoControllerBase, Store {
     return _$getVeiculosAsyncAction.run(() => super.getVeiculos());
   }
 
-  final _$_EstacionamentoControllerBaseActionController =
-      ActionController(name: '_EstacionamentoControllerBase');
-
-  @override
-  void clickBotaoEntradaSaida(Veiculo veiculo) {
-    final _$actionInfo =
-        _$_EstacionamentoControllerBaseActionController.startAction(
-            name: '_EstacionamentoControllerBase.clickBotaoEntradaSaida');
-    try {
-      return super.clickBotaoEntradaSaida(veiculo);
-    } finally {
-      _$_EstacionamentoControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
-veiculos: ${veiculos},
-corBotaoEntradaSaida: ${corBotaoEntradaSaida},
-labelBotaoEntradaSaida: ${labelBotaoEntradaSaida},
-carregando: ${carregando}
+veiculos: ${veiculos}
     ''';
   }
 }

@@ -1,4 +1,4 @@
-class Veiculo {
+class VeiculoModel {
   int id;
   String nome;
   String marca;
@@ -10,7 +10,7 @@ class Veiculo {
 
   get Decricao => "$marca $nome $ano $cor";
 
-  Veiculo(
+  VeiculoModel(
       {this.id,
       this.nome,
       this.marca,
@@ -20,7 +20,7 @@ class Veiculo {
       this.imagem,
       this.entrada});
 
-  Veiculo.fromJson(Map<String, dynamic> json) {
+  VeiculoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
     marca = json['marca'];

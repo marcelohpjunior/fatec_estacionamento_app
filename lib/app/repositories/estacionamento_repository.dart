@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/native_imp.dart';
 import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/store/veiculo_store.dart';
 import 'interfaces/estacionamento_repository_interface.dart';
 
 class EstacionamentoRepository implements IEstacionamentoRepository {
@@ -12,16 +13,23 @@ class EstacionamentoRepository implements IEstacionamentoRepository {
   Future get() async {
     final response = await dio.get(
         'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/master/lib/app/repositories/mock/estacionamento.json');
-    var jsonVeiculo = json.decode(response.data)['veiculos'];
 
-    return veiculofromJson(jsonVeiculo);
+    if (response.statusCode == 200) {
+      var jsonVeiculoModel = json.decode(response.data)['veiculos'];
+
+      return veiculofromJson(jsonVeiculoModel);
+    }
+    return null;
   }
 
   veiculofromJson(var veiculosJson) {
-    var veiculos = new List<Veiculo>();
+    var veiculos = new List<VeiculoStore>();
     if (veiculosJson != null) {
       veiculosJson.forEach((v) {
-        veiculos.add(new Veiculo.fromJson(v));
+        var model = new VeiculoModel.fromJson(v);
+        var store = new VeiculoStore();
+        store.veiculo = model;
+        veiculos.add(store);
       });
       return veiculos;
     }

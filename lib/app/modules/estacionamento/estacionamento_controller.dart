@@ -1,4 +1,5 @@
 import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/store/veiculo_store.dart';
 import 'package:fatec_estacionamento/app/repositories/estacionamento_repository.dart';
 import 'package:fatec_estacionamento/app/repositories/interfaces/estacionamento_repository_interface.dart';
 import 'package:flutter/material.dart';
@@ -15,28 +16,7 @@ abstract class _EstacionamentoControllerBase with Store {
   _EstacionamentoControllerBase({this.repositorio}) {}
 
   @observable
-  List<Veiculo> veiculos = List<Veiculo>();
-
-  @observable
-  Color corBotaoEntradaSaida = Colors.green;
-
-  @observable
-  String labelBotaoEntradaSaida = "ENTRAR";
-
-  @observable
-  bool carregando = false;
-
-  @action
-  void clickBotaoEntradaSaida(Veiculo veiculo) {
-    if (veiculo.entrada) {
-      corBotaoEntradaSaida = Colors.red;
-      labelBotaoEntradaSaida = "SAÍDA";
-    } else {
-      corBotaoEntradaSaida = Colors.green;
-      labelBotaoEntradaSaida = "ENTRAR";
-    }
-    veiculo.entrada = !veiculo.entrada;
-  }
+  List<VeiculoStore> veiculos = List<VeiculoStore>();
 
   @action
   getVeiculos() async {
