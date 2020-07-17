@@ -43,7 +43,7 @@ class _EstacionamentoPageState
   }
 
   retornaNOVOCard(Veiculo veiculo) {
-    var controller = EstacionamentoController(null);
+    var controller = EstacionamentoController();
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       height: 150,
@@ -128,7 +128,7 @@ class _EstacionamentoPageState
                         color: controller.corBotaoEntradaSaida,
                         onPressed: () async {
                           controller.carregando = true;
-                          await Future.delayed(Duration(seconds: 3))
+                          await Future.delayed(Duration(seconds: 2))
                               .then((onValue) => true);
 
                           controller.clickBotaoEntradaSaida(veiculo);
@@ -138,7 +138,7 @@ class _EstacionamentoPageState
                           return controller.carregando
                               ? CircularProgressIndicator(
                                   backgroundColor: Colors.white,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                  valueColor: new AlwaysStoppedAnimation<Color>(
                                       controller.corBotaoEntradaSaida),
                                 )
                               : Text(

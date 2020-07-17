@@ -10,9 +10,9 @@ class EstacionamentoController = _EstacionamentoControllerBase
     with _$EstacionamentoController;
 
 abstract class _EstacionamentoControllerBase with Store {
-  final IEstacionamentoRepository repositorio;
+  IEstacionamentoRepository repositorio;
 
-  _EstacionamentoControllerBase(this.repositorio) {}
+  _EstacionamentoControllerBase({this.repositorio}) {}
 
   @observable
   List<Veiculo> veiculos = List<Veiculo>();
@@ -28,14 +28,14 @@ abstract class _EstacionamentoControllerBase with Store {
 
   @action
   void clickBotaoEntradaSaida(Veiculo veiculo) {
-    veiculo.entrada = !veiculo.entrada;
     if (veiculo.entrada) {
-      corBotaoEntradaSaida = Colors.green;
-      labelBotaoEntradaSaida = "ENTRAR";
-    } else {
       corBotaoEntradaSaida = Colors.red;
       labelBotaoEntradaSaida = "SAÍDA";
+    } else {
+      corBotaoEntradaSaida = Colors.green;
+      labelBotaoEntradaSaida = "ENTRAR";
     }
+    veiculo.entrada = !veiculo.entrada;
   }
 
   @action

@@ -1,3 +1,4 @@
+import 'package:fatec_estacionamento/app/repositories/estacionamento_repository.dart';
 import 'package:fatec_estacionamento/app/repositories/interfaces/estacionamento_repository_interface.dart';
 
 import 'estacionamento_controller.dart';
@@ -8,8 +9,9 @@ import 'estacionamento_page.dart';
 class EstacionamentoModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) =>
-            EstacionamentoController(i.get<IEstacionamentoRepository>())),
+        Bind((i) => EstacionamentoController(
+            repositorio: i.get<IEstacionamentoRepository>())),
+        Bind<IEstacionamentoRepository>((i) => EstacionamentoRepository(Dio())),
       ];
 
   @override

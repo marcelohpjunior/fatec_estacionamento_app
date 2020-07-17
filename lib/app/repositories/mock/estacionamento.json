@@ -8,7 +8,7 @@
       "placa": "ABC-1234",
       "cor": "Branca",
       "imagem": "https://i.pinimg.com/originals/57/5e/58/575e5808ad1b14380c54e3e9734a4883.jpg",
-      "entrada": true
+      "entrada": false
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "placa": "CBA-4321",
       "cor": "Amarela",
       "imagem": "https://revistacarro.com.br/wp-content/uploads/2019/10/Volkswagen-Bras%C3%ADlia-6.jpg",
-      "entrada": true
+      "entrada": false
     }
   ]
 }
