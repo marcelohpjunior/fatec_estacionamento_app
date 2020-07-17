@@ -18,7 +18,7 @@
       "placa": "CBA-4321",
       "cor": "Amarela",
       "imagem": "https://revistacarro.com.br/wp-content/uploads/2019/10/Volkswagen-Bras%C3%ADlia-6.jpg",
-      "entrada": false
+      "entrada": true
     }
   ]
 }
