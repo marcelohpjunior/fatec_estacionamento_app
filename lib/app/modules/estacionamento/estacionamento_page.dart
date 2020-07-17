@@ -1,5 +1,6 @@
 import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
 import 'package:fatec_estacionamento/app/modules/estacionamento/estacionamento_module.dart';
+import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,24 +26,37 @@ class _EstacionamentoPageState
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder(
-        future: controller.getVeiculos(),
-        builder: (context, snapshot) {
-          if (snapshot.data == null) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext ctxt, int index) {
-                controller.veiculos[index].accorBotaoEntradaSaida();
-                return VeiculoCard(
-                  store: controller.veiculos[index],
-                );
-              });
-        },
-      ),
+      body: Observer(builder: (_) {
+        return FutureBuilder(
+          future: controller.getVeiculos(),
+          builder: (context, snapshot) {
+            if (snapshot.data == null) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  if (snapshot.data.length == 0) {
+                    return Center(
+                      child: Text(
+                        "Nenhum veículo cadastrado",
+                        style: TextStyle(
+                            color: CustomColors.azulEscuro,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    );
+                  }
+                  controller.veiculos[index].attCorBotaoEntradaSaida();
+                  return VeiculoCard(
+                    store: controller.veiculos[index],
+                  );
+                });
+          },
+        );
+      }),
     );
   }
 }

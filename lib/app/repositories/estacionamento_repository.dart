@@ -12,7 +12,7 @@ class EstacionamentoRepository implements IEstacionamentoRepository {
 
   Future get() async {
     final response = await dio.get(
-        'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/dev/lib/app/repositories/mock/estacionamento.json');
+        'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/dev/assets/mock/estacionamento.json');
 
     if (response.statusCode == 200) {
       var jsonVeiculoModel = json.decode(response.data)['veiculos'];

@@ -12,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color iconColor;
   final Color borderColor;
   final Color labelColor;
+  final ValueChanged<String> onChanged;
 
   CustomTextFormField(
       {this.validator,
@@ -23,7 +24,8 @@ class CustomTextFormField extends StatelessWidget {
       this.cursorColor,
       this.iconColor,
       this.borderColor,
-      this.labelColor});
+      this.labelColor,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: this.textEditingController,
       keyboardType: keyboardType,
       validator: validator,
+      onChanged: onChanged,
       obscureText: this.controller?.mostrarSenha != null
           ? this.controller?.mostrarSenha
           : false,

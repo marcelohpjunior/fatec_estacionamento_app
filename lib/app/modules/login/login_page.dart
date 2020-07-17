@@ -16,7 +16,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
   final _formKey = GlobalKey<FormState>();
-  LoginController controller = LoginController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.carregarLoginLocalDB();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     children: <Widget>[
                       Container(
                         // width: 100,
-                        padding: const EdgeInsets.only(bottom: 30),
+                        padding: const EdgeInsets.symmetric(vertical: 30),
                         child: Image.asset(
                           "assets/images/logo3.png",
                           scale: 1.2,
@@ -48,6 +54,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: CustomTextFormField(
+                                textEditingController:
+                                    controller.raEditingController,
                                 keyboardType: TextInputType.number,
                                 labelText: "RA",
                                 obscureText: false,
@@ -56,6 +64,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 labelColor: CustomColors.vinho,
                                 iconColor: Colors.blueGrey,
                                 validator: (value) {
+                                  controller.aluno.ra = int.parse(value);
                                   //   if (value.isEmpty) {
                                   //     return "RA inválido";
                                   //   }
@@ -71,6 +80,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Observer(builder: (_) {
                                 return CustomTextFormField(
+                                  textEditingController:
+                                      controller.senhaEditingController,
                                   controller: controller,
                                   keyboardType: TextInputType.text,
                                   obscureText: true,
@@ -80,6 +91,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   labelColor: CustomColors.vinho,
                                   iconColor: Colors.blueGrey,
                                   validator: (value) {
+                                    controller.aluno.senha = value;
                                     // if (value.isEmpty) {
                                     //   return "Senha inválido";
                                     // }
@@ -92,21 +104,25 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            InkWell(
-                              onTap: () {
-                                print("clicou esqueceu");
-                              },
-                              child: Text(
-                                "Esqueci minha senha",
-                                style: TextStyle(
-                                    color: CustomColors.vinho,
-                                    //fontWeight: FontWeight.bold,
-                                    fontSize: 14),
-                              ),
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Observer(builder: (_) {
+                              return Switch(
+                                  inactiveThumbColor: Colors.blueGrey[50],
+                                  value: controller.manterConectado,
+                                  onChanged: (value) {
+                                    controller.manterConectado = value;
+                                  });
+                            }),
+                            Text(
+                              "Mantenha-me conectado",
+                              style: TextStyle(
+                                  color: CustomColors.azulEscuro,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
                             ),
                           ],
                         ),
@@ -125,8 +141,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState.validate())
+                          if (_formKey.currentState.validate()) {
+                            controller.salvarLoginLocalDB();
                             Navigator.pushReplacementNamed(context, '/home');
+                          }
                         },
                       ),
                       SizedBox(

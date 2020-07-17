@@ -68,11 +68,11 @@ mixin _$VeiculoStore on _VeiculoStoreBase, Store {
       ActionController(name: '_VeiculoStoreBase');
 
   @override
-  dynamic accorBotaoEntradaSaida() {
+  void attCorBotaoEntradaSaida() {
     final _$actionInfo = _$_VeiculoStoreBaseActionController.startAction(
-        name: '_VeiculoStoreBase.accorBotaoEntradaSaida');
+        name: '_VeiculoStoreBase.attCorBotaoEntradaSaida');
     try {
-      return super.accorBotaoEntradaSaida();
+      return super.attCorBotaoEntradaSaida();
     } finally {
       _$_VeiculoStoreBaseActionController.endAction(_$actionInfo);
     }

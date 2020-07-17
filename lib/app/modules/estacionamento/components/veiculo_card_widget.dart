@@ -97,7 +97,6 @@ class VeiculoCard extends StatelessWidget {
                               .then((onValue) => true);
 
                           store.clickBotaoEntradaSaida();
-                          store.accorBotaoEntradaSaida();
                           store.carregando = false;
                         },
                         child: Observer(builder: (_) {

@@ -13,9 +13,6 @@ abstract class _VeiculoStoreBase with Store {
   @observable
   Color corBotaoEntradaSaida = Colors.green;
 
-  @action
-  accorBotaoEntradaSaida() {}
-
   @computed
   String get labelBotaoEntradaSaida => veiculo.entrada ? "SAIR" : "ENTRAR";
 
@@ -23,12 +20,17 @@ abstract class _VeiculoStoreBase with Store {
   bool carregando = false;
 
   @action
-  void clickBotaoEntradaSaida() {
-    veiculo.entrada = !veiculo.entrada;
+  void attCorBotaoEntradaSaida() {
     if (veiculo.entrada) {
       corBotaoEntradaSaida = Colors.red;
     } else {
       corBotaoEntradaSaida = Colors.green;
     }
+  }
+
+  @action
+  void clickBotaoEntradaSaida() {
+    veiculo.entrada = !veiculo.entrada;
+    attCorBotaoEntradaSaida();
   }
 }

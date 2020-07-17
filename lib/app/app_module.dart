@@ -1,3 +1,6 @@
+import 'package:fatec_estacionamento/app/services/interfaces/ilocal_database_service.dart';
+
+import 'services/shared_preferences_local_db_service.dart';
 import 'package:fatec_estacionamento/app/app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +12,9 @@ import 'modules/login/login_module.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => SharedPreferencesLocalDbService()),
+        Bind<ILocalDataBaseService>(
+            (i) => i.get<SharedPreferencesLocalDbService>()),
         Bind((i) => AppController()),
       ];
 
