@@ -2,12 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fatec_estacionamento/app/repositories/interfaces/estacionamento_repository_interface.dart';
-
 class MockClient extends Mock implements Dio {}
 
 void main() {
-  IEstacionamentoRepository repository;
+  //IEstacionamentoRepository repository;
   // MockClient client;
 
   setUp(() {

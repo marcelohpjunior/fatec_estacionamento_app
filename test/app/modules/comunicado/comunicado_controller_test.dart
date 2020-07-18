@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fatec_estacionamento/app/modules/comunicado/comunicado_controller.dart';
 import 'package:fatec_estacionamento/app/modules/comunicado/comunicado_module.dart';
 
 void main() {

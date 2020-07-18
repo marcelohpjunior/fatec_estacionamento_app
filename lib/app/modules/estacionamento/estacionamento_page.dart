@@ -1,5 +1,3 @@
-import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
-import 'package:fatec_estacionamento/app/modules/estacionamento/estacionamento_module.dart';
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -18,8 +16,6 @@ class EstacionamentoPage extends StatefulWidget {
 
 class _EstacionamentoPageState
     extends ModularState<EstacionamentoPage, EstacionamentoController> {
-  //use 'controller' variable to access controller
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

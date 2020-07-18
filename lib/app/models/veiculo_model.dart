@@ -8,7 +8,7 @@ class VeiculoModel {
   String imagem;
   bool entrada;
 
-  get Decricao => "$marca $nome $ano $cor";
+  String get decricao => "$marca $nome $ano $cor";
 
   VeiculoModel(
       {this.id,

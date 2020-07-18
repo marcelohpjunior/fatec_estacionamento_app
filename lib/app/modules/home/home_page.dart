@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  //use 'controller' variable to access controller
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +25,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         children: <Widget>[
           RouterOutlet(module: EstacionamentoModule()),
           RouterOutlet(module: ComunicadoModule()),
+          Container()
         ],
       ),
       bottomNavigationBar: Observer(builder: (_) {

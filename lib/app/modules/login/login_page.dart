@@ -19,7 +19,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.carregarLoginLocalDB();
   }
@@ -32,14 +31,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         children: <Widget>[
           Expanded(
             child: Container(
-                //color: Color.fromRGBO(14, 14, 14, 1),
                 child: SafeArea(
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
                       Container(
-                        // width: 100,
                         padding: const EdgeInsets.symmetric(vertical: 30),
                         child: Image.asset(
                           "assets/images/logo3.png",
@@ -64,10 +61,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 labelColor: CustomColors.vinho,
                                 iconColor: Colors.blueGrey,
                                 validator: (value) {
-                                  controller.aluno.ra = int.parse(value);
-                                  //   if (value.isEmpty) {
-                                  //     return "RA inválido";
-                                  //   }
+                                  if (value.isEmpty || int.parse(value) <= 0) {
+                                    return "RA inválido";
+                                  }
                                   return null;
                                 },
                               ),
@@ -91,10 +87,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   labelColor: CustomColors.vinho,
                                   iconColor: Colors.blueGrey,
                                   validator: (value) {
-                                    controller.aluno.senha = value;
-                                    // if (value.isEmpty) {
-                                    //   return "Senha inválido";
-                                    // }
+                                    if (value.isEmpty ||
+                                        value.trim().length <= 0) {
+                                      return "Senha inválido";
+                                    }
                                     return null;
                                   },
                                 );
@@ -118,7 +114,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                   });
                             }),
                             Text(
-                              "Mantenha-me conectado",
+                              "Lembrar dados de login",
                               style: TextStyle(
                                   color: CustomColors.azulEscuro,
                                   fontWeight: FontWeight.bold,

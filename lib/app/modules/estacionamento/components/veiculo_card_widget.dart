@@ -1,12 +1,17 @@
-import 'package:fatec_estacionamento/app/modules/estacionamento/store/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/store/veiculo_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class VeiculoCard extends StatelessWidget {
-  VeiculoStore store;
+class VeiculoCard extends StatefulWidget {
+  final VeiculoStore store;
 
   VeiculoCard({this.store});
 
+  @override
+  _VeiculoCardState createState() => _VeiculoCardState();
+}
+
+class _VeiculoCardState extends State<VeiculoCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +19,6 @@ class VeiculoCard extends StatelessWidget {
       height: 150,
       width: double.maxFinite,
       child: Card(
-        //color: Colors.black,
         elevation: 5,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,9 +30,8 @@ class VeiculoCard extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     width: 100,
-                    // color: Colors.red,
                     child: Image.network(
-                      store.veiculo.imagem,
+                      widget.store.veiculo.imagem,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -42,7 +45,6 @@ class VeiculoCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        //color: Colors.amber,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +54,7 @@ class VeiculoCard extends StatelessWidget {
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      store.veiculo.Decricao,
+                                      widget.store.veiculo.decricao,
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -66,8 +68,7 @@ class VeiculoCard extends StatelessWidget {
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      store.veiculo.placa.toUpperCase(),
-                                      //"ADB-1234",
+                                      widget.store.veiculo.placa.toUpperCase(),
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -87,32 +88,30 @@ class VeiculoCard extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: 100,
-                    //color: Colors.blue,
                     child: Observer(builder: (_) {
                       return RaisedButton(
-                        color: store.corBotaoEntradaSaida,
+                        color: widget.store.corBotaoEntradaSaida,
                         onPressed: () async {
-                          store.carregando = true;
+                          widget.store.carregando = true;
                           await Future.delayed(Duration(seconds: 2))
                               .then((onValue) => true);
 
-                          store.clickBotaoEntradaSaida();
-                          store.carregando = false;
+                          widget.store.clickBotaoEntradaSaida();
+                          widget.store.carregando = false;
                         },
                         child: Observer(builder: (_) {
-                          return store.carregando
+                          return widget.store.carregando
                               ? CircularProgressIndicator(
                                   backgroundColor: Colors.white,
                                   valueColor: new AlwaysStoppedAnimation<Color>(
-                                      store.corBotaoEntradaSaida),
+                                      widget.store.corBotaoEntradaSaida),
                                 )
                               : Text(
-                                  store.labelBotaoEntradaSaida,
+                                  widget.store.labelBotaoEntradaSaida,
                                   style: TextStyle(color: Colors.white),
                                 );
                         }),
                       );
-                      // retornaLabelEntradaSaida(controller.carregando));
                     }),
                   ),
                 ),

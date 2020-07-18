@@ -1,3 +1,4 @@
+import 'package:fatec_estacionamento/app/modules/comunicado/components/comunicado_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'comunicado_controller.dart';
@@ -12,16 +13,20 @@ class ComunicadoPage extends StatefulWidget {
 
 class _ComunicadoPageState
     extends ModularState<ComunicadoPage, ComunicadoController> {
-  //use 'controller' variable to access controller
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Container(
+        child: ListView.builder(
+          padding: EdgeInsets.only(top: 10),
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            return ComunicadoCard();
+          },
+        ),
       ),
     );
   }

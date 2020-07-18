@@ -42,7 +42,7 @@ abstract class _LoginControllerBase with Store {
     if (manterConectado) {
       aluno.ra = int.parse(raEditingController.text);
       localDataBaseService.put("ra", aluno.ra);
-      aluno.senha = raEditingController.text;
+      aluno.senha = senhaEditingController.text;
       localDataBaseService.put("senha", aluno.senha);
     } else {
       localDataBaseService.put("ra", 0);

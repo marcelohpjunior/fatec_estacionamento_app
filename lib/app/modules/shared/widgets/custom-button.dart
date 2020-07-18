@@ -57,17 +57,5 @@ class CustomButtom extends StatelessWidget {
         );
       },
     );
-    // return StretchableButton(
-    //   buttonColor: color,
-    //   borderRadius: 8,
-    //   onPressed: onPressed,
-    //   buttonPadding: 8.0,
-    //   children: <Widget>[
-    //     Padding(
-    //       padding: const EdgeInsets.symmetric(horizontal: 100),
-    //       child: text,
-    //     ),
-    //   ],
-    // );
   }
 }
