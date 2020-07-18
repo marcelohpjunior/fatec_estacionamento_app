@@ -9,39 +9,33 @@ part of 'comunicado_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ComunicadoController on _ComunicadoControllerBase, Store {
-  final _$valueAtom = Atom(name: '_ComunicadoControllerBase.value');
+  final _$comunicadosAtom = Atom(name: '_ComunicadoControllerBase.comunicados');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  List<ComunicadoModel> get comunicados {
+    _$comunicadosAtom.reportRead();
+    return super.comunicados;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set comunicados(List<ComunicadoModel> value) {
+    _$comunicadosAtom.reportWrite(value, super.comunicados, () {
+      super.comunicados = value;
     });
   }
 
-  final _$_ComunicadoControllerBaseActionController =
-      ActionController(name: '_ComunicadoControllerBase');
+  final _$getComunicadosAsyncAction =
+      AsyncAction('_ComunicadoControllerBase.getComunicados');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_ComunicadoControllerBaseActionController
-        .startAction(name: '_ComunicadoControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_ComunicadoControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future getComunicados() {
+    return _$getComunicadosAsyncAction.run(() => super.getComunicados());
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+comunicados: ${comunicados}
     ''';
   }
 }

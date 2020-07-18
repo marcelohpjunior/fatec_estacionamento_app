@@ -22,37 +22,35 @@ class _EstacionamentoPageState
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Observer(builder: (_) {
-        return FutureBuilder(
-          future: controller.getVeiculos(),
-          builder: (context, snapshot) {
-            if (snapshot.data == null) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  if (snapshot.data.length == 0) {
-                    return Center(
-                      child: Text(
-                        "Nenhum veículo cadastrado",
-                        style: TextStyle(
-                            color: CustomColors.azulEscuro,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    );
-                  }
-                  controller.veiculos[index].attCorBotaoEntradaSaida();
-                  return VeiculoCard(
-                    store: controller.veiculos[index],
+      body: FutureBuilder(
+        future: controller.getVeiculos(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                if (snapshot.data.length == 0) {
+                  return Center(
+                    child: Text(
+                      "Nenhum veículo cadastrado",
+                      style: TextStyle(
+                          color: CustomColors.azulEscuro,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
                   );
-                });
-          },
-        );
-      }),
+                }
+                controller.veiculos[index].attCorBotaoEntradaSaida();
+                return VeiculoCard(
+                  store: controller.veiculos[index],
+                );
+              });
+        },
+      ),
     );
   }
 }

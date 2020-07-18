@@ -8,7 +8,8 @@ import 'comunicado_page.dart';
 class ComunicadoModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => ComunicadoController()),
+        Bind((i) =>
+            ComunicadoController(repositorio: i.get<IComunicadoRepository>())),
         Bind<IComunicadoRepository>((i) => ComunicadoRepository(Dio())),
       ];
 
