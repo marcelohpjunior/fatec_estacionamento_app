@@ -1,5 +1,4 @@
 import 'package:fatec_estacionamento/app/modules/comunicado/components/comunicado_card_widget.dart';
-import 'package:fatec_estacionamento/app/modules/estacionamento/components/veiculo_card_widget.dart';
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -44,7 +43,7 @@ class _ComunicadoPageState
                   );
                 }
 
-                return ComunicadoCard();
+                return ComunicadoCard(store: controller.comunicados[index]);
               });
         },
       ),

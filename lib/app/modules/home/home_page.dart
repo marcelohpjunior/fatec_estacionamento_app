@@ -23,8 +23,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         physics: NeverScrollableScrollPhysics(),
         controller: controller.pageController,
         children: <Widget>[
-          RouterOutlet(module: EstacionamentoModule()),
-          RouterOutlet(module: ComunicadoModule()),
+          RouterOutlet(
+            module: EstacionamentoModule(),
+            //keepAlive: false,
+          ),
+          RouterOutlet(
+            module: ComunicadoModule(),
+            //keepAlive: false,
+          ),
           Container()
         ],
       ),

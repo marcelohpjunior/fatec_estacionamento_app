@@ -1,14 +1,20 @@
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
+import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ComunicadoCard extends StatelessWidget {
+  final ComunicadoStore store;
+  ComunicadoCard({this.store});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InkWell(
           onTap: () {
-            print("clicou");
+            Modular.to.pushNamed('/home/comunicado/detalhe',
+                arguments: this.store.comunicado);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -34,10 +40,14 @@ class ComunicadoCard extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         width: 100,
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          fit: BoxFit.fill,
-                        ),
+                        child: store.comunicado.imagem != null
+                            ? Image.network(
+                                store.comunicado.imagem,
+                                fit: BoxFit.fill,
+                              )
+                            : Center(
+                                child: CircularProgressIndicator(),
+                              ),
                       ),
                     ),
                   ],
@@ -58,7 +68,7 @@ class ComunicadoCard extends StatelessWidget {
                                     Expanded(
                                       child: Container(
                                         child: Text(
-                                          "Lorem ipsum dolor sit amet LorLorem ",
+                                          store.comunicado.titulo,
                                           maxLines: 2,
                                           style: TextStyle(
                                               color: CustomColors.azulEscuro,
@@ -74,7 +84,7 @@ class ComunicadoCard extends StatelessWidget {
                                     Expanded(
                                       child: Container(
                                         child: Text(
-                                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit est eu augue luctus eleif Lorem ipsum dolor sit amet Lor Lorem ipsum dolor sit amet Lor ",
+                                          store.comunicado.texto,
                                           maxLines: 3,
                                         ),
                                       ),

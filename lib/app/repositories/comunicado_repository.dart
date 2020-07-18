@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/native_imp.dart';
 import 'package:fatec_estacionamento/app/models/comunicado_model.dart';
+import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
 import 'interfaces/comunicado_repository_interface.dart';
 
 class ComunicadoRepository implements IComunicadoRepository {
@@ -11,21 +12,24 @@ class ComunicadoRepository implements IComunicadoRepository {
 
   Future get() async {
     final response = await dio.get(
-        'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/dev/assets/mock/estacionamento.json');
+        'https://raw.githubusercontent.com/marcelohpjunior/fatec_estacionamento_app/dev/assets/mock/comunicados.json');
 
     if (response.statusCode == 200) {
-      var jsonVeiculoModel = json.decode(response.data);
+      var jsonComunicadoModel = json.decode(response.data);
 
-      return veiculofromJson(jsonVeiculoModel);
+      return comunicadofromJson(jsonComunicadoModel);
     }
     return null;
   }
 
-  veiculofromJson(var comunicadosJson) {
-    var comunicados = new List<ComunicadoModel>();
+  comunicadofromJson(var comunicadosJson) {
+    var comunicados = new List<ComunicadoStore>();
     if (comunicadosJson != null) {
       comunicadosJson.forEach((v) {
-        comunicados.add(ComunicadoModel.fromJson(v));
+        var model = new ComunicadoModel.fromJson(v);
+        var store = new ComunicadoStore();
+        store.comunicado = model;
+        comunicados.add(store);
       });
       return comunicados;
     }

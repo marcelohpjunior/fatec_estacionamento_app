@@ -1,5 +1,5 @@
-import 'package:fatec_estacionamento/app/models/comunicado_model.dart';
 import 'package:fatec_estacionamento/app/repositories/interfaces/comunicado_repository_interface.dart';
+import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
 import 'package:mobx/mobx.dart';
 
 part 'comunicado_controller.g.dart';
@@ -9,10 +9,14 @@ class ComunicadoController = _ComunicadoControllerBase
 
 abstract class _ComunicadoControllerBase with Store {
   @observable
-  List<ComunicadoModel> comunicados = List<ComunicadoModel>();
+  List<ComunicadoStore> comunicados = List<ComunicadoStore>();
   IComunicadoRepository repositorio;
 
   _ComunicadoControllerBase({this.repositorio});
+
+  int index;
+
+  ComunicadoStore get comunicado => comunicados[index];
 
   @action
   getComunicados() async {

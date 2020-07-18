@@ -1,6 +1,5 @@
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'components/veiculo_card_widget.dart';
 import 'estacionamento_controller.dart';

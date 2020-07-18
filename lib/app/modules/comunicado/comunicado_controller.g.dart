@@ -12,13 +12,13 @@ mixin _$ComunicadoController on _ComunicadoControllerBase, Store {
   final _$comunicadosAtom = Atom(name: '_ComunicadoControllerBase.comunicados');
 
   @override
-  List<ComunicadoModel> get comunicados {
+  List<ComunicadoStore> get comunicados {
     _$comunicadosAtom.reportRead();
     return super.comunicados;
   }
 
   @override
-  set comunicados(List<ComunicadoModel> value) {
+  set comunicados(List<ComunicadoStore> value) {
     _$comunicadosAtom.reportWrite(value, super.comunicados, () {
       super.comunicados = value;
     });
