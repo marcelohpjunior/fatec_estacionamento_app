@@ -1,5 +1,5 @@
+import 'package:fatec_estacionamento/app/modules/comunicado/stores/comunicado_store.dart';
 import 'package:fatec_estacionamento/app/modules/shared/widgets/custom-colors.dart';
-import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

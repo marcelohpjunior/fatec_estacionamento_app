@@ -1,4 +1,4 @@
-import 'package:fatec_estacionamento/app/store/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/stores/veiculo_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

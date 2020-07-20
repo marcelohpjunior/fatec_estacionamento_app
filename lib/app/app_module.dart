@@ -1,7 +1,6 @@
-import 'package:fatec_estacionamento/app/services/interfaces/ilocal_database_service.dart';
-
-import 'services/shared_preferences_local_db_service.dart';
 import 'package:fatec_estacionamento/app/app_controller.dart';
+import 'package:fatec_estacionamento/app/modules/shared/services/interfaces/ilocal_database_service.dart';
+import 'package:fatec_estacionamento/app/modules/shared/services/shared_preferences_local_db_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:fatec_estacionamento/app/app_widget.dart';

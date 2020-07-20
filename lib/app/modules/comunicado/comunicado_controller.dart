@@ -1,5 +1,5 @@
-import 'package:fatec_estacionamento/app/repositories/interfaces/comunicado_repository_interface.dart';
-import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
+import 'package:fatec_estacionamento/app/modules/comunicado/stores/comunicado_store.dart';
+import 'package:fatec_estacionamento/app/modules/shared/repositories/interfaces/comunicado_repository_interface.dart';
 import 'package:mobx/mobx.dart';
 
 part 'comunicado_controller.g.dart';

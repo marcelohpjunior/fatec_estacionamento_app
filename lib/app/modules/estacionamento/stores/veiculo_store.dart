@@ -1,6 +1,6 @@
+import 'package:fatec_estacionamento/app/modules/shared/models/veiculo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
 
 part 'veiculo_store.g.dart';
 

@@ -1,7 +1,7 @@
 import 'package:fatec_estacionamento/app/app_module.dart';
 import 'package:fatec_estacionamento/app/modules/login/login_controller.dart';
 import 'package:fatec_estacionamento/app/modules/login/login_page.dart';
-import 'package:fatec_estacionamento/app/services/interfaces/ilocal_database_service.dart';
+import 'package:fatec_estacionamento/app/modules/shared/services/interfaces/ilocal_database_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class LoginModule extends ChildModule {

@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:dio/native_imp.dart';
-import 'package:fatec_estacionamento/app/models/comunicado_model.dart';
-import 'package:fatec_estacionamento/app/store/comunicado_store.dart';
+import 'package:fatec_estacionamento/app/modules/comunicado/stores/comunicado_store.dart';
+import 'package:fatec_estacionamento/app/modules/shared/models/comunicado_model.dart';
 import 'interfaces/comunicado_repository_interface.dart';
 
 class ComunicadoRepository implements IComunicadoRepository {

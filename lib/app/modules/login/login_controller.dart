@@ -1,5 +1,5 @@
-import 'package:fatec_estacionamento/app/models/aluno_model.dart';
-import 'package:fatec_estacionamento/app/services/interfaces/ilocal_database_service.dart';
+import 'package:fatec_estacionamento/app/modules/shared/models/aluno_model.dart';
+import 'package:fatec_estacionamento/app/modules/shared/services/interfaces/ilocal_database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 

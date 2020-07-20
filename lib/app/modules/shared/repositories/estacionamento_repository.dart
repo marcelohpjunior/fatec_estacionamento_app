@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:dio/native_imp.dart';
-import 'package:fatec_estacionamento/app/models/veiculo_model.dart';
-import 'package:fatec_estacionamento/app/store/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/stores/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/modules/shared/models/veiculo_model.dart';
 import 'interfaces/estacionamento_repository_interface.dart';
 
 class EstacionamentoRepository implements IEstacionamentoRepository {

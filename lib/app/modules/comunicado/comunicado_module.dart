@@ -1,12 +1,13 @@
-import 'package:fatec_estacionamento/app/modules/comunicado/pages/detalhe_comunicado/detalhe_comunicado_page.dart';
-
-import 'pages/detalhe_comunicado/detalhe_comunicado_controller.dart';
-import 'package:fatec_estacionamento/app/repositories/comunicado_repository.dart';
-import 'package:fatec_estacionamento/app/repositories/interfaces/comunicado_repository_interface.dart';
-import 'comunicado_controller.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:fatec_estacionamento/app/modules/comunicado/pages/detalhe_comunicado/detalhe_comunicado_page.dart';
+import 'package:fatec_estacionamento/app/modules/shared/repositories/comunicado_repository.dart';
+import 'package:fatec_estacionamento/app/modules/shared/repositories/interfaces/comunicado_repository_interface.dart';
+
+import 'comunicado_controller.dart';
 import 'comunicado_page.dart';
+import 'pages/detalhe_comunicado/detalhe_comunicado_controller.dart';
 
 class ComunicadoModule extends ChildModule {
   @override

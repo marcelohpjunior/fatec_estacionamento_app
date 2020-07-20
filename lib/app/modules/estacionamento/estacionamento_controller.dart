@@ -1,6 +1,6 @@
-import 'package:fatec_estacionamento/app/store/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/modules/estacionamento/stores/veiculo_store.dart';
+import 'package:fatec_estacionamento/app/modules/shared/repositories/interfaces/estacionamento_repository_interface.dart';
 import 'package:mobx/mobx.dart';
-import 'package:fatec_estacionamento/app/repositories/interfaces/estacionamento_repository_interface.dart';
 
 part 'estacionamento_controller.g.dart';
 

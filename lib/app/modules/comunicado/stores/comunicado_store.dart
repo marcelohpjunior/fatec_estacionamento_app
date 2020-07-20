@@ -1,5 +1,5 @@
+import 'package:fatec_estacionamento/app/modules/shared/models/comunicado_model.dart';
 import 'package:mobx/mobx.dart';
-import 'package:fatec_estacionamento/app/models/comunicado_model.dart';
 
 part 'comunicado_store.g.dart';
 
