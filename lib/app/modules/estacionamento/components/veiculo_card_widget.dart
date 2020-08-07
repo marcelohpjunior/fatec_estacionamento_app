@@ -2,16 +2,11 @@ import 'package:fatec_estacionamento/app/modules/estacionamento/stores/veiculo_s
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class VeiculoCard extends StatefulWidget {
+class VeiculoCard extends StatelessWidget {
   final VeiculoStore store;
 
   VeiculoCard({this.store});
 
-  @override
-  _VeiculoCardState createState() => _VeiculoCardState();
-}
-
-class _VeiculoCardState extends State<VeiculoCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +26,7 @@ class _VeiculoCardState extends State<VeiculoCard> {
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     width: 100,
                     child: Image.network(
-                      widget.store.veiculo.imagem,
+                      store.veiculo.imagem,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -54,7 +49,8 @@ class _VeiculoCardState extends State<VeiculoCard> {
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      widget.store.veiculo.decricao,
+                                      store.veiculo.decricao,
+                                      maxLines: 4,
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -68,7 +64,8 @@ class _VeiculoCardState extends State<VeiculoCard> {
                                 Expanded(
                                   child: Container(
                                     child: Text(
-                                      widget.store.veiculo.placa.toUpperCase(),
+                                      store.veiculo.placa.toUpperCase(),
+                                      maxLines: 1,
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -90,24 +87,24 @@ class _VeiculoCardState extends State<VeiculoCard> {
                     width: 100,
                     child: Observer(builder: (_) {
                       return RaisedButton(
-                        color: widget.store.corBotaoEntradaSaida,
+                        color: store.corBotaoEntradaSaida,
                         onPressed: () async {
-                          widget.store.carregando = true;
+                          store.carregando = true;
                           await Future.delayed(Duration(seconds: 2))
                               .then((onValue) => true);
 
-                          widget.store.clickBotaoEntradaSaida();
-                          widget.store.carregando = false;
+                          store.clickBotaoEntradaSaida();
+                          store.carregando = false;
                         },
                         child: Observer(builder: (_) {
-                          return widget.store.carregando
+                          return store.carregando
                               ? CircularProgressIndicator(
                                   backgroundColor: Colors.white,
                                   valueColor: new AlwaysStoppedAnimation<Color>(
-                                      widget.store.corBotaoEntradaSaida),
+                                      store.corBotaoEntradaSaida),
                                 )
                               : Text(
-                                  widget.store.labelBotaoEntradaSaida,
+                                  store.labelBotaoEntradaSaida,
                                   style: TextStyle(color: Colors.white),
                                 );
                         }),

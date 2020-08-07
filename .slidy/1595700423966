@@ -1,0 +1,4 @@
+lib/app/counter/counter_page.dart
+test/app/counter/counter_page_test.dart
+lib/app/counter/counter_controller.dart
+test/app/counter/counter_controller_test.dart
